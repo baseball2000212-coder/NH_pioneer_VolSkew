@@ -1,0 +1,21 @@
+# 인증정보 및 개인 환경
+.env
+.env.*
+!.env.example
+config.yaml
+config.yml
+credentials*
+secrets*
+*.pem
+*.key
+# 개발 산출물
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# 첫 호출 결과는 올리되 토큰 파일은 제외
+token*.json
