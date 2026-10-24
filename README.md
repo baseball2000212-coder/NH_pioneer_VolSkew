@@ -30,7 +30,7 @@ NH선물 REST API Pioneer 1기(2026.10.21 ~ 12.11) 팀 저장소입니다.
 pip install -r requirements.txt
 ```
 
-인증정보는 저장소에 두지 않습니다. `config.example.yaml` 을 아래 경로로 복사해 키를 넣습니다.
+인증정보는 저장소에 두지 않으며 `config.example.yaml` 을 아래 경로로 복사해 키를 넣습니다.
 
 - Windows: `%USERPROFILE%\NHFutures\config\config.yaml`
 - macOS / Linux: `~/NHFutures/config/config.yaml`
