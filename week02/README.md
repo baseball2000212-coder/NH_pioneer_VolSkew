@@ -378,5 +378,3 @@ python charts.py plot
 
 - Baltussen, G., Da, Z., Lammers, S., & Martens, M. (2021). Hedging demand and market intraday momentum. *Journal of Financial Economics*, 142(1), 377–403.
 - 성태균·정형찬 (2019). 레버리지/인버스 ETF가 주가지수 선물시장에 미치는 영향에 관한 연구. 『금융공학연구』 18(2), 85–117.
-
-[전체 일정으로](../README.md)
