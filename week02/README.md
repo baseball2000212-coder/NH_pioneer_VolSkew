@@ -44,7 +44,7 @@ $$RD \approx L(L-1)\cdot r \cdot AUM$$
 
 - **15:20 진입:** 현물이 종가 단일가에 들어가는 시각입니다. 이때부터 ETF 가 맞춰야 할 노출이 거의 정해집니다.
 - **종가 단일가 청산:** 백테스트의 청산 가격이 15:45 종가 단일가 체결가 그 자체라 청산 쪽 슬리피지가 없습니다. 실행 위험은 15:20 진입에만 남습니다.
-- **3% 기준:** 학습 구간(~2026-04)에서 정했습니다. 학습 구간에서 3% 이상 움직인 33일은 같은 방향으로 들어가면 평균 −4.14pt 로 크게 깨졌고, 그중에서도 6% 넘게 움직인 8일(평균 −14pt)에 손실이 몰려 있었습니다.
+- **3% 기준:** 학습 구간(~2026-04)에서 정했습니다. 학습 구간에서 3% 이상 움직인 33일은 같은 방향으로 들어가면 평균 −4.14pt 로 크게 깨졌고, 그중에서도 6% 넘게 움직인 8일(평균 −14pt)에 손실이 몰려 있었습니다.**
 - **당일 청산:** 막판에 밀린 가격은 다음 날 아침에 되돌려집니다(2-2절 ⑤). 오버나이트로 들고 가면 번 것을 돌려줍니다.
 - **1계약:** 이번 주는 규칙대로 돌아가는지 확인하는 것이 목적이라 크기를 늘리지 않았습니다.
 
@@ -62,8 +62,7 @@ $$RD \approx L(L-1)\cdot r \cdot AUM$$
 | --- | --- |
 | [trades.csv](results/backtest/trades.csv) | 243거래일 매매기록 (신호, 진입가, 청산가, 수수료, 손익) |
 | [summary.json](results/backtest/summary.json) | 전체·학습·검증 요약, 단순 보유 비교 |
-| [threshold_sensitivity.csv](results/backtest/threshold_sensitivity.csv) | 등락률 기준별 성과 |
-| [move_buckets.csv](results/backtest/move_buckets.csv) | 등락률 구간별 막판 수익 |
+| [range_breakdown.csv](results/backtest/range_breakdown.csv) | 등락률 구간별 성과 (학습·검증·전체) |
 | [intraday_placebo.csv](results/backtest/intraday_placebo.csv) | 같은 규칙을 다른 시각에 적용한 결과 |
 | [late_split.csv](results/backtest/late_split.csv) | 막판 25분을 현물 마감 전·후로 나눈 결과 |
 | [next_day_reversal.csv](results/backtest/next_day_reversal.csv) | 다음 날 아침 반전 회귀 |
