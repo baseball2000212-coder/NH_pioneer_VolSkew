@@ -1,0 +1,46 @@
+{
+  "strategy": {
+    "id": "late-session-momentum",
+    "name": "장 막판 모멘텀 (3% 규칙)",
+    "version": "v1",
+    "market": "domestic",
+    "sym": "A066C000",
+    "contract": "코스닥150 선물 2026-12월물",
+    "session": "day",
+    "order_qty": 1,
+    "multiplier": "10000",
+    "tick": "0.1"
+  },
+  "params": {
+    "threshold_pct": "3.0",
+    "decision_time": "15:19:50",
+    "entry_time": "15:20:00",
+    "entry_grace_s": 30,
+    "stop_pt": "10.0",
+    "stop_until": "15:34:55",
+    "exit_mode": "continuous",
+    "exit_submit_time_auction": "15:35:30",
+    "exit_submit_time_continuous": "15:34:30",
+    "exit_retry_time": "15:44:00",
+    "auction_fill_time": "15:45:00",
+    "end_time": "15:46:30",
+    "start_not_before": "15:00:00",
+    "cost_pt_roundtrip": "0.5",
+    "sim_slippage_ticks": "1",
+    "price_max_age_s": 60,
+    "poll_interval_s": 0.2,
+    "fill_poll_interval_s": 0.5,
+    "fill_poll_max_s": 8
+  },
+  "risk": {
+    "max_position": 1,
+    "daily_loss_limit": "300000",
+    "session_end_flat_minutes": 10
+  },
+  "backtest": {
+    "cost_pt_list": ["0.0", "0.2", "0.5", "1.0"],
+    "threshold_pct_list": ["1.0", "2.0", "2.5", "3.0", "4.0", "5.0", "100"],
+    "exit_list": ["1525", "1530", "1534", "1545"],
+    "train_end": "20260430"
+  }
+}

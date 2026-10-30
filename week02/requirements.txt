@@ -1,0 +1,5 @@
+httpx==0.28.1
+websockets==17.3
+pyyaml==6.0.3
+pytest==9.1.1
+matplotlib==3.11.2   # 차트(charts.py)에만 필요

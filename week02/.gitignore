@@ -1,0 +1,24 @@
+# 인증정보 및 개인 환경
+.env
+.env.*
+!.env.example
+config.yaml
+config.yml
+tokens.json
+credentials*
+secrets*
+_secrets/
+*.pem
+*.key
+# 개발 산출물
+.venv/
+venv/
+.nhapi_cache/
+.pytest_cache/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+logs/
+STOP
