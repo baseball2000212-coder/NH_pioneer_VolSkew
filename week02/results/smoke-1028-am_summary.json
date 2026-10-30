@@ -1,0 +1,174 @@
+{
+  "run_id": "smoke-1028-am",
+  "stage": "am",
+  "label": "[모의계좌 주문] 스모크",
+  "started": "2026-10-28T09:05:44+09:00",
+  "steps": [
+    {
+      "step": "place_limit",
+      "status": "accepted",
+      "code": "",
+      "message": "",
+      "order_no": "0000000070",
+      "history": [
+        {
+          "order_no": "0000000070",
+          "org_order_no": "0000000070",
+          "status_code": "3",
+          "status_name": "미체결",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "1.000000000",
+          "cancelled": "0E-9",
+          "price": "1277.500000000",
+          "reject_reason": "",
+          "recv_time": "090547731"
+        }
+      ],
+      "price": "1277.5"
+    },
+    {
+      "step": "modify_limit",
+      "status": "accepted",
+      "code": "",
+      "message": "",
+      "order_no": "0000000071",
+      "history": [
+        {
+          "order_no": "0000000070",
+          "org_order_no": "0000000070",
+          "status_code": "3",
+          "status_name": "정정완료",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "0E-9",
+          "cancelled": "0E-9",
+          "price": "1277.500000000",
+          "reject_reason": "",
+          "recv_time": "090547731"
+        },
+        {
+          "order_no": "0000000071",
+          "org_order_no": "",
+          "status_code": "3",
+          "status_name": "미체결",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "1.000000000",
+          "cancelled": "0E-9",
+          "price": "1277.000000000",
+          "reject_reason": "",
+          "recv_time": "090548456"
+        }
+      ],
+      "price": "1277.0"
+    },
+    {
+      "step": "cancel_limit",
+      "status": "accepted",
+      "code": "",
+      "message": "",
+      "order_no": "0000000072",
+      "history": [
+        {
+          "order_no": "0000000070",
+          "org_order_no": "0000000070",
+          "status_code": "3",
+          "status_name": "정정완료",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "0E-9",
+          "cancelled": "0E-9",
+          "price": "1277.500000000",
+          "reject_reason": "",
+          "recv_time": "090547731"
+        },
+        {
+          "order_no": "0000000071",
+          "org_order_no": "",
+          "status_code": "3",
+          "status_name": "정정완료",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "0E-9",
+          "cancelled": "1.000000000",
+          "price": "1277.000000000",
+          "reject_reason": "",
+          "recv_time": "090548456"
+        },
+        {
+          "order_no": "0000000072",
+          "org_order_no": "0000000071",
+          "status_code": "3",
+          "status_name": "취소완료",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "0E-9",
+          "cancelled": "0E-9",
+          "price": "0E-9",
+          "reject_reason": "",
+          "recv_time": "090548666"
+        }
+      ],
+      "still_open_after_cancel": 0
+    },
+    {
+      "step": "market_buy",
+      "status": "filled",
+      "filled": 1,
+      "price": "1279.400000000",
+      "order_no": "0000000073",
+      "code": "",
+      "message": "",
+      "ask_before": "1279.70",
+      "bid_before": "1279.50",
+      "slippage_vs_ask_pt": "-0.300000000"
+    },
+    {
+      "step": "position_after_buy",
+      "net_position": 1
+    },
+    {
+      "step": "market_sell",
+      "status": "filled",
+      "filled": 1,
+      "price": "1279.500000000",
+      "order_no": "0000000074",
+      "code": "",
+      "message": ""
+    },
+    {
+      "step": "position_after_sell",
+      "net_position": 0
+    },
+    {
+      "step": "round_trip",
+      "gross_pt": "0.100000000",
+      "note": "스프레드·슬리피지가 포함된 왕복 손익(수수료 별도)"
+    }
+  ],
+  "start_state": {
+    "positions": 0,
+    "open_orders": 0
+  },
+  "book_before": {
+    "bid": "1279.50",
+    "ask": "1279.70"
+  },
+  "deposit": {
+    "start": {
+      "total_assets": "100000000.000",
+      "cash": "100000000.000",
+      "orderable_total": "100000000.000",
+      "fee": "0.000"
+    },
+    "end": {
+      "total_assets": "100000000.000",
+      "cash": "100000000.000",
+      "orderable_total": "99998492.000",
+      "fee": "2508.000"
+    }
+  },
+  "final_position": 0,
+  "finished": "2026-10-28T09:05:50+09:00"
+}

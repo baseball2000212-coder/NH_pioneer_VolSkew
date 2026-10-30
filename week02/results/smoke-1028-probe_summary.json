@@ -1,0 +1,77 @@
+{
+  "run_id": "smoke-1028-probe",
+  "stage": "probe",
+  "label": "[모의계좌 주문] 스모크",
+  "started": "2026-10-28T15:36:25+09:00",
+  "steps": [
+    {
+      "step": "auction_place_limit",
+      "status": "accepted",
+      "code": "",
+      "message": "",
+      "order_no": "0000001182",
+      "history": [
+        {
+          "order_no": "0000001182",
+          "org_order_no": "0000001182",
+          "status_code": "1",
+          "status_name": "미접수",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "1.000000000",
+          "cancelled": "0E-9",
+          "price": "1280.900000000",
+          "reject_reason": "",
+          "recv_time": ""
+        }
+      ],
+      "price": "1280.9"
+    },
+    {
+      "step": "auction_cancel_limit",
+      "status": "rejected",
+      "code": "5039",
+      "message": "처리불가 [원주문 접수확인 전이거나 잔량이 없는 경우. 에러 ]",
+      "order_no": "",
+      "history": [
+        {
+          "order_no": "0000001182",
+          "org_order_no": "0000001182",
+          "status_code": "1",
+          "status_name": "미접수",
+          "qty": "1.000000000",
+          "exec_qty": "0E-9",
+          "remaining": "1.000000000",
+          "cancelled": "0E-9",
+          "price": "1280.900000000",
+          "reject_reason": "",
+          "recv_time": ""
+        }
+      ]
+    }
+  ],
+  "start_state": {
+    "positions": 0,
+    "open_orders": 0
+  },
+  "book_before": {
+    "bid": "1282.90",
+    "ask": "1283.00"
+  },
+  "deposit": {
+    "start": {
+      "total_assets": "100000000.000",
+      "cash": "100000000.000",
+      "orderable_total": "99998492.000",
+      "fee": "2508.000"
+    },
+    "end": {
+      "total_assets": "100000000.000",
+      "cash": "100000000.000",
+      "orderable_total": "97305690.000",
+      "fee": "2508.000"
+    }
+  },
+  "final_position": 0,
+  "finished": "2026-10-28T15:36:27+09:00"
+}

@@ -1,0 +1,43 @@
+{
+  "label": "[참고용 사후 계산] 거래 아님",
+  "source": "NH 모의 서버 분봉(domestic_chart-minute)",
+  "cost_pt": "0.5",
+  "days": [
+    {
+      "date": "20261028",
+      "prev_close_date": "20261027",
+      "prev_close": "1241.10",
+      "close_1519": "1294.90",
+      "ret_pct": "4.335",
+      "rule_decision": "skip_threshold",
+      "entry_1520_open": "1295.00",
+      "exit_1534_close": "1295.20",
+      "if_follow_net_pt": "-0.30",
+      "if_reverse_net_pt": "-0.70"
+    },
+    {
+      "date": "20261029",
+      "prev_close_date": "20261028",
+      "prev_close": "1295.60",
+      "close_1519": "1255.30",
+      "ret_pct": "-3.111",
+      "rule_decision": "skip_threshold",
+      "entry_1520_open": "1255.20",
+      "exit_1534_close": "1253.50",
+      "if_follow_net_pt": "1.20",
+      "if_reverse_net_pt": "-2.20"
+    },
+    {
+      "date": "20261030",
+      "prev_close_date": "20261029",
+      "prev_close": "1253.80",
+      "close_1519": "1203.20",
+      "ret_pct": "-4.036",
+      "rule_decision": "skip_threshold",
+      "entry_1520_open": "1203.20",
+      "exit_1534_close": "1203.60",
+      "if_follow_net_pt": "-0.90",
+      "if_reverse_net_pt": "-0.10"
+    }
+  ]
+}
