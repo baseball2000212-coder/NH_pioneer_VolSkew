@@ -1,0 +1,63 @@
+{
+  "run_ids": [
+    "smoke-20261104-a"
+  ],
+  "modes": [
+    "smoke"
+  ],
+  "first_ts": "2026-11-04T19:43:23.902+09:00",
+  "last_ts": "2026-11-04T19:43:33.351+09:00",
+  "lines_by_kind": {
+    "event": 50,
+    "order": 10
+  },
+  "api_calls": {
+    "overseas_deposit": {
+      "calls": 2,
+      "errors": 0,
+      "latency_p50_ms": 63.0,
+      "latency_p95_ms": 78.0
+    },
+    "overseas_open-interest": {
+      "calls": 6,
+      "errors": 0,
+      "latency_p50_ms": 78.0,
+      "latency_p95_ms": 157.0
+    },
+    "overseas_order": {
+      "calls": 5,
+      "errors": 0,
+      "latency_p50_ms": 94.0,
+      "latency_p95_ms": 125.0
+    },
+    "overseas_order-history": {
+      "calls": 12,
+      "errors": 0,
+      "latency_p50_ms": 78.0,
+      "latency_p95_ms": 93.0
+    },
+    "overseas_orderable-quantity": {
+      "calls": 1,
+      "errors": 0,
+      "latency_p50_ms": 78.0,
+      "latency_p95_ms": 78.0
+    },
+    "overseas_price": {
+      "calls": 1,
+      "errors": 0,
+      "latency_p50_ms": 31.0,
+      "latency_p95_ms": 31.0
+    }
+  },
+  "order_stages": {
+    "sent": 5,
+    "ack": 5
+  },
+  "fills_by_source": {},
+  "trades": 0,
+  "trades_usd_total": null,
+  "trades_by_source": {},
+  "errors": [],
+  "api_issues": [],
+  "run_events": []
+}

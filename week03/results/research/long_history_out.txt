@@ -1,0 +1,109 @@
+자료 적재 중 ...
+GC 1분봉 2,413,073개 2020-01-02 ~ 2026-10-30
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:84: Pandas4Warning: Sorting by default when concatenating all DatetimeIndex is deprecated.  In the future, pandas will respect the default of `sort=False`. Specify `sort=True` or `sort=False` to silence this message. If you see this warnings when not directly calling concat, report a bug to pandas.
+  r = pd.concat([e, b], axis=1, keys=["e", "b"]).dropna()
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:107: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.
+  d = bars[bars[daycol].dt.dayofweek < 5]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:164: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  closed = pd.Series([(d.dayofweek >= 5) or (d in SET["CN"]) for d in cal], index=cal)
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:85: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  r = r[(r["e"] > 0) & (r["b"] > 0) & (r.index.dayofweek < 5)]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:107: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.
+  d = bars[bars[daycol].dt.dayofweek < 5]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:107: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.
+  d = bars[bars[daycol].dt.dayofweek < 5]
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+C:\Users\seung\REST_API_Pioneer_1st\week03\work\long_history_tests.py:125: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = pd.get_dummies(f.index.dayofweek, drop_first=True).astype(float).values
+
+==============================================================================================================
+[중국] C1. 이벤트 거래량 점프 — 하루 단위 짝지은 로그비 (연도별 배수, 2자리 연도:배수)
+  상하이 개장 10:00~10:30 / 09:00~10:00 KST         전체 n=1762 1.93배 t= +56.74 | 연도별 20:2.11 21:2.24 22:1.78 23:1.71 24:2.15 25:1.79 26:1.79 | 양(+)인 해 7/7
+  중국 점심 12:30~14:30 / 오전장 10:00~12:30          전체 n=1761 0.56배 t= -61.37 | 연도별 20:0.51 21:0.49 22:0.62 23:0.61 24:0.55 25:0.58 26:0.54 | 양(+)인 해 0/7
+  오후 재개 14:30~15:00 / 점심 12:30~14:30           전체 n=1761 1.74배 t= +48.21 | 연도별 20:1.87 21:2.03 22:1.62 23:1.60 24:1.73 25:1.55 26:1.87 | 양(+)인 해 7/7
+
+[중국] C2. 중국 휴장일 DID — 중국 거래시간 거래량 비중 (로짓, 연-월·요일 고정효과, HC 표준오차). 통제: 미국·영국·일본·한국·홍콩단독 휴장
+  전체 중국 휴장일                                cn(n=123) 계수 -0.388(비중 -32%) t=-11.63  [일수 1759]
+  휴장 종류별(설·국경절·그 밖)                        cn_sf(n=40) 계수 -0.507(비중 -40%) t=-7.58 | cn_nd(n=37) 계수 -0.272(비중 -24%) t=-5.09 | cn_other(n=46) 계수 -0.381(비중 -32%) t=-8.33  [일수 1759]
+[중국] C3. 같은 DID — 중국 거래시간 변동성(|1분 수익률| 합) 비중
+  전체 중국 휴장일(변동성)                           cn(n=123) 계수 -0.213(비중 -19%) t=-11.97  [일수 1759]
+  종류별(변동성)                                 cn_sf(n=40) 계수 -0.230(비중 -21%) t=-6.55 | cn_nd(n=37) 계수 -0.157(비중 -15%) t=-5.15 | cn_other(n=46) 계수 -0.240(비중 -21%) t=-9.98  [일수 1759]
+
+[중국] C4/C5. 장기 연휴(≥3일, 43회) 전후 영업일의 중국 거래시간(10:00~16:00 KST) 수익률(bp) — 일반일 1401일과 비교
+  연휴 직후 첫 영업일          n= 42 |수익률|  39.3bp vs 일반  33.1bp (Welch t=+0.99, p=0.320) | 부호 있는 평균  +9.6bp vs  +0.5bp (t=+1.05, p=0.294) | 상승한 날 50%
+  연휴 직전 영업일            n= 41 |수익률|  28.3bp vs 일반  33.1bp (Welch t=-1.51, p=0.132) | 부호 있는 평균  -1.3bp vs  +0.5bp (t=-0.32, p=0.745) | 상승한 날 46%
+
+==============================================================================================================
+[런던] L1. 이벤트 거래량 점프 (런던 현지시각, 연도별 배수)
+  런던 개장 08:00~08:30 / 07:00~08:00              전체 n=1761 1.25배 t= +22.95 | 연도별 20:1.30 21:1.31 22:1.54 23:1.20 24:1.17 25:1.24 26:1.02 | 양(+)인 해 7/7
+  LBMA 오전 고시 10:25~10:35 / 10:00~10:25         전체 n=1762 1.38배 t= +26.01 | 연도별 20:1.29 21:1.33 22:1.28 23:1.36 24:1.45 25:1.36 26:1.71 | 양(+)인 해 7/7
+  LBMA 오후 고시 14:55~15:05 / 14:30~14:55         전체 n=1762 1.13배 t= +11.71 | 연도별 20:1.18 21:1.08 22:1.14 23:1.13 24:1.12 25:1.09 26:1.16 | 양(+)인 해 7/7
+  (대조) 미국 지표 13:30~14:00 / 13:00~13:30         전체 n=1762 1.43배 t= +25.09 | 연도별 20:1.41 21:1.43 22:1.36 23:1.67 24:1.56 25:1.33 26:1.26 | 양(+)인 해 7/7
+
+[런던] L2. 영국(잉글랜드) 단독 휴장일 DID — 런던 오전(08~12시) 거래량 비중. 처리일 26일 = 영국 휴장 중 미국 휴장·성금요일·12/24~1/2 제외
+  영국 단독 휴장일                                uk_clean(n=26) 계수 -0.184(비중 -17%) t=-3.34  [일수 1760]
+  영국 휴장 전체(참고)                             uk_any(n=39) 계수 -0.211(비중 -19%) t=-4.99  [일수 1760]
+[런던] L3. 같은 DID — 런던 오전 변동성 비중
+  영국 단독 휴장일(변동성)                           uk_clean(n=26) 계수 -0.114(비중 -11%) t=-3.85  [일수 1760]
+
+[대조] 방법 점검 (이 DID 가 실제 효과를 잡아내는가 / 특이성)
+  미국 휴장일 → 미국 시간대 비중(양성 대조)                us(n=61) 계수 -0.800(비중 -55%) t=-11.80  [일수 1760]
+  중국 휴장일 → 런던 오전 비중(특이성)                   cn(n=123) 계수 -0.002(비중 -0%) t=-0.08  [일수 1760]
+  영국 휴장일 → 중국 시간대 비중(특이성)                  uk(n=38) 계수 +0.102(비중 +11%) t=+1.49  [일수 1759]
+
+[런던] L4/L5. LBMA 고시 전후 30분 수익률(bp), 런던 현지 평일 — 일 단위 t, 연도별 평균 부호
+  오전 고시 10:30 전 30분: n=1760 평균  -1.27bp t= -3.95 p=0.000 | 연도별 평균 20:-2.6 21:-2.0 22:+1.1 23:-0.4 24:+0.3 25:-1.4 26:-4.6 | 양(+)인 해 2/7
+  오전 고시 10:30 후 30분: n=1760 평균  +0.88bp t= +2.59 p=0.010 | 연도별 평균 20:-0.6 21:+1.5 22:+0.3 23:+1.2 24:+1.0 25:+0.5 26:+2.6 | 양(+)인 해 6/7
+  오후 고시 15:00 전 30분: n=1760 평균  -0.98bp t= -1.36 p=0.173 | 연도별 평균 20:-3.5 21:-1.5 22:+1.7 23:-0.8 24:-0.1 25:-2.8 26:+0.4 | 양(+)인 해 2/7
+  오후 고시 15:00 후 30분: n=1759 평균  +0.87bp t= +1.26 p=0.208 | 연도별 평균 20:+3.1 21:+0.4 22:+1.1 23:+1.0 24:-0.9 25:+3.1 26:-2.1 | 양(+)인 해 5/7
+
+==============================================================================================================
+다중비교 — 주요 검정 Holm 보정 (유의수준 0.05)
+  C2 중국휴장→중국시간대 거래량 비중                         p=0.0000  Holm 보정 p=0.0000  유의
+  C3 중국휴장→중국시간대 변동성 비중                         p=0.0000  Holm 보정 p=0.0000  유의
+  C4 연휴 직후 |중국시간대 수익률|                         p=0.3201  Holm 보정 p=0.5281  유의하지 않음
+  C5 연휴 직전 |중국시간대 수익률|                         p=0.1320  Holm 보정 p=0.5281  유의하지 않음
+  L2 영국단독휴장→런던오전 거래량 비중                        p=0.0008  Holm 보정 p=0.0050  유의
+  L3 영국단독휴장→런던오전 변동성 비중                        p=0.0001  Holm 보정 p=0.0008  유의
+  L4 LBMA 오전 고시 전 30분                          p=0.0001  Holm 보정 p=0.0006  유의
+  L4 LBMA 오전 고시 후 30분                          p=0.0097  Holm 보정 p=0.0486  유의
+  L5 LBMA 오후 고시 전 30분                          p=0.1728  Holm 보정 p=0.5281  유의하지 않음
+  L5 LBMA 오후 고시 후 30분                          p=0.2079  Holm 보정 p=0.5281  유의하지 않음
+
+==============================================================================================================
+[장기 일봉] 금 일수익률 ~ 2년물 + DXY (+ 달러 광의지수 중 DXY 로 설명 안 되는 성분: 위안·멕시코·캐나다 등), 2006~2026
+  광의지수 일수익률의 DXY 로 설명되는 비율(R²): 0.57
+  2006~2026: n= 5172 R² 0.186 → 0.192 (Δ=+0.0065) 광의지수 비-DXY 성분 계수 -0.419 (HAC t=-4.49)
+  2006~2015: n= 2485 R² 0.163 → 0.174 (Δ=+0.0103) 광의지수 비-DXY 성분 계수 -0.547 (HAC t=-3.76)
+  2016~2026: n= 2687 R² 0.223 → 0.226 (Δ=+0.0023) 광의지수 비-DXY 성분 계수 -0.242 (HAC t=-2.31)
+  2020~2026: n= 1698 R² 0.195 → 0.200 (Δ=+0.0051) 광의지수 비-DXY 성분 계수 -0.420 (HAC t=-2.87)
+  (주의: 광의지수는 뉴욕 정오 기준, 금은 뉴욕 17시 종가라 시각이 다름. 위안 비중은 일부일 뿐이라 '중국 고유'가 아니라 비-DXY 달러 성분)

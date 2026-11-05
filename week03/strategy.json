@@ -1,0 +1,59 @@
+{
+  "strategy": {
+    "id": "cn-vol-gate-filter-v3",
+    "name": "중국장 변동성 게이트 + 필터형 규칙 2·3",
+    "version": "v3",
+    "market": "overseas",
+    "exchange": "FCME",
+    "sym": "MGCZ26",
+    "zt_exchange": "FCME",
+    "zt_sym": "ZTZ26",
+    "order_qty": 1,
+    "tick": "0.1",
+    "multiplier": 10
+  },
+  "params": {
+    "gate": {
+      "quantile": 0.67,
+      "min_history_days": 120,
+      "window_start": "10:00",
+      "window_end": "15:55",
+      "decision_time": "16:00"
+    },
+    "rule2": {
+      "range_start": "08:00",
+      "range_end": "16:00",
+      "entry_start": "16:00",
+      "entry_end": "22:00",
+      "exit_time": "23:50",
+      "breakout_ticks": 1,
+      "min_range_bars": 200,
+      "confirm_minutes": 30,
+      "confirm_delay_minutes": 1,
+      "zt_fair_coeff": 0.33345
+    },
+    "rule3": {
+      "session_open_ny": "18:00",
+      "signal_ny": "08:29",
+      "entry_ny": "08:30",
+      "exit_ny": "09:45",
+      "entry_tolerance_minutes": 10
+    }
+  },
+  "costs": {
+    "round_trip_usd": 4.0,
+    "slippage_ticks": 0
+  },
+  "risk": {
+    "max_position": 1,
+    "daily_loss_limit": 800,
+    "session_end_flat_minutes": 5,
+    "rule3_emergency_stop_usd": 300
+  },
+  "live": {
+    "poll_seconds": 5,
+    "fill_wait_seconds": 20,
+    "end_time": "23:55",
+    "backfill_pages": 4
+  }
+}

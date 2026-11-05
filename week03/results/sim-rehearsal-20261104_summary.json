@@ -1,0 +1,41 @@
+{
+  "run_ids": [
+    "sim-rehearsal-20261104"
+  ],
+  "modes": [
+    "paper-sim"
+  ],
+  "first_ts": "2026-11-04T19:58:28.413+09:00",
+  "last_ts": "2026-11-04T19:59:37.411+09:00",
+  "lines_by_kind": {
+    "run": 2,
+    "event": 35
+  },
+  "api_calls": {
+    "overseas_chart-minute": {
+      "calls": 30,
+      "errors": 0,
+      "latency_p50_ms": 94.0,
+      "latency_p95_ms": 203.0
+    }
+  },
+  "order_stages": {},
+  "fills_by_source": {},
+  "trades": 0,
+  "trades_usd_total": null,
+  "trades_by_source": {},
+  "errors": [],
+  "api_issues": [],
+  "run_events": [
+    {
+      "phase": "start",
+      "reason": null,
+      "gate_pass": null
+    },
+    {
+      "phase": "end",
+      "reason": "킬 스위치: STOP 파일 발견: STOP",
+      "gate_pass": true
+    }
+  ]
+}

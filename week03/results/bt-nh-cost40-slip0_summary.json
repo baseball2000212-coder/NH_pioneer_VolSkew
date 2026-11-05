@@ -1,0 +1,25 @@
+{
+  "days": 160,
+  "gate_pass_days": 155,
+  "gate_unknown_days": 1,
+  "trading_days": 138,
+  "trades": 138,
+  "total_usd": 6776.0,
+  "mean_per_trading_day": 49.1,
+  "t_stat": 2.42,
+  "win_rate_days": 0.514,
+  "max_drawdown_usd": -1063.0,
+  "worst_day_usd": -439.0,
+  "by_rule": {
+    "2": {
+      "trades": 24,
+      "mean_usd": 94.04,
+      "win_rate": 0.583
+    },
+    "3": {
+      "trades": 114,
+      "mean_usd": 39.64,
+      "win_rate": 0.5
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "run_ids": [
+    "ord-20261105"
+  ],
+  "modes": [
+    "paper-order"
+  ],
+  "first_ts": "2026-11-05T16:21:24.264+09:00",
+  "last_ts": "2026-11-05T23:55:02.199+09:00",
+  "lines_by_kind": {
+    "event": 10335,
+    "run": 2,
+    "error": 12,
+    "signal": 2,
+    "order": 4,
+    "fill": 2,
+    "trade": 1
+  },
+  "api_calls": {
+    "overseas_chart-minute": {
+      "calls": 10229,
+      "errors": 52,
+      "latency_p50_ms": 125.0,
+      "latency_p95_ms": 234.0
+    },
+    "overseas_open-interest": {
+      "calls": 2,
+      "errors": 0,
+      "latency_p50_ms": 78.0,
+      "latency_p95_ms": 109.0
+    },
+    "overseas_order": {
+      "calls": 2,
+      "errors": 0,
+      "latency_p50_ms": 94.0,
+      "latency_p95_ms": 125.0
+    },
+    "overseas_order-history": {
+      "calls": 6,
+      "errors": 0,
+      "latency_p50_ms": 78.0,
+      "latency_p95_ms": 110.0
+    }
+  },
+  "order_stages": {
+    "sent": 2,
+    "ack": 2
+  },
+  "fills_by_source": {
+    "mock-account": 2
+  },
+  "trades": 1,
+  "trades_usd_total": -208.0,
+  "trades_by_source": {
+    "mock-account": {
+      "n": 1,
+      "usd_total": -208.0
+    }
+  },
+  "errors": [
+    {
+      "ts": "2026-11-05T17:05:49.111+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW033) 백엔드 서버와의 연결에 실패했습니다."
+    },
+    {
+      "ts": "2026-11-05T17:05:57.753+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW033) 백엔드 서버와의 연결에 실패했습니다."
+    },
+    {
+      "ts": "2026-11-05T17:06:06.355+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:06:15.042+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:06:23.716+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW033) 백엔드 서버와의 연결에 실패했습니다."
+    },
+    {
+      "ts": "2026-11-05T17:06:32.386+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:06:41.009+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:06:49.620+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:06:58.243+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:07:06.857+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:07:24.522+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    },
+    {
+      "ts": "2026-11-05T17:07:33.126+09:00",
+      "category": "poll",
+      "msg": "GatewayError: overseas_chart-minute 요청이 거절되었습니다. (EGW020) 요청이 허용된 양을 초과하여 차단되었습니다. 일정 시간 후 다시 시도해주세요."
+    }
+  ],
+  "api_issues": [],
+  "run_events": [
+    {
+      "phase": "start",
+      "reason": null,
+      "gate_pass": null
+    },
+    {
+      "phase": "end",
+      "reason": "마감 시각",
+      "gate_pass": true
+    }
+  ]
+}

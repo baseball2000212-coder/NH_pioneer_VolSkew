@@ -1,0 +1,22 @@
+# NH선물 Open API 설정 예시 (모의 전용) — 값이 빈 예시 파일입니다.
+#
+# 사용법: 이 파일을 `_secrets/config.yaml` 로 복사한 뒤 발급받은 값을 채웁니다.
+# 경로를 바꾸려면 환경변수 NHFUTURES_CONFIG 에 파일 경로를 지정합니다.
+# `_secrets/` 폴더는 저장소에 올리지 않습니다.
+#
+# APP Key 와 APP Secret 은 국내와 해외가 각각 별도로 발급됩니다. 쓰지 않는 시장은 비워 두어도 됩니다.
+# 인증 정보는 APP Key 와 APP Secret 뿐입니다. 계좌 비밀번호는 쓰지 않습니다.
+
+default_environment: paper
+
+paper:
+  # 접속 주소. 안내받은 주소가 기본값과 다를 때만 바꿉니다.
+  base_url: https://apidemo.futures.co.kr
+
+  domestic:
+    app_key: ""
+    app_secret: ""
+
+  overseas:
+    app_key: ""
+    app_secret: ""
