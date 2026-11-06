@@ -1,10 +1,10 @@
-"""전략 핵심 — 「중국장 변동성 게이트 + 필터형 규칙 2·3」. 네트워크·파일 접근이 없는 순수 로직입니다.
+"""전략 핵심 — 「아시아 시간대 금 변동성 게이트 + 필터형 규칙 2·3」. 네트워크·파일 접근이 없는 순수 로직입니다.
 
 백테스트·자체 시뮬레이션·모의계좌 주문이 **같은 `DayEngine` 을 씁니다**(코드와 문서가 어긋나지 않도록).
 엔진은 봉을 받아 `Intent`(진입/청산 의도)를 돌려주고, 체결은 실행기(`executors.py`)가 합니다.
 
 하루(한국시간 날짜) 흐름
- 1. 중국장 변동성 = 10:00~15:55 1분 로그수익률 제곱합(RV). 16:00 에 '오늘 이전 모든 날의 67 백분위' 이상이면 게이트 통과.
+ 1. 아시아 시간대 금 변동성 = 10:00~15:55 KST 금(MGC/GC) 1분 로그수익률 제곱합(RV). 중국 지수·A50 데이터는 쓰지 않음. 16:00 에 '오늘 이전 모든 날의 67 백분위' 이상이면 게이트 통과.
     통과하지 못하거나 이력이 120일 미만이면 그날은 거래하지 않습니다.
  2. 규칙 2 : 08:00~16:00 고저 범위(봉 200개 이상). 16:00~22:00 에 범위 고가+1틱 위/저가−1틱 아래를 처음 뚫는 쪽으로,
     직전 30분 ZT 변화 부호가 돌파 방향과 같을 때만 진입. 손절 = 범위 중간값, 23:50 청산. 하루 한 번(양방향 동시 돌파는 건너뜀).
@@ -23,7 +23,7 @@ from typing import Any
 import numpy as np
 
 from nhapi.risk import RiskManager  # 보유 한도·일일 손실 한도·킬 스위치
-from sessions import hm, kst_minutes, ny_minutes
+from sessions import hm, kst_minutes, ny_is_dst, ny_minutes
 
 
 @dataclass(frozen=True)
@@ -44,6 +44,8 @@ class Intent:
     ref_price: float      # 판단에 쓴 기준가(진입 수준·봉 시가·손절선 등)
     reason: str
     ts: datetime
+    at_level: bool = False  # 기준가가 '봉 안에서 닿은 수준가'(돌파선·손절선)인가. 봉 시가·종가처럼 관찰된 값이면 False.
+                            # 백테스트 체결 모델(backtest.BarFillExecutor)이 이 값을 보고 감지 봉 종가·다음 봉 시가로 바꿉니다.
 
 
 @dataclass
@@ -74,7 +76,7 @@ def china_rv(closes: list[float]) -> float:
 
 
 def gate_threshold(history: list[float], quantile: float, min_days: int) -> float | None:
-    """오늘 이전 모든 날의 중국장 RV 의 분위수. 이력이 min_days 미만이면 None(거래하지 않음)."""
+    """오늘 이전 모든 날의 아시아 시간대 금 RV 의 분위수. 이력이 min_days 미만이면 None(거래하지 않음)."""
     clean = [x for x in history if x is not None and x > 0 and not math.isnan(x)]
     if len(clean) < min_days:
         return None
@@ -100,9 +102,14 @@ class DayEngine:
         tick: float = 0.1,
         multiplier: float = 10.0,
         qty: int = 1,
+        stop_gap_buffer_usd: float = 0.0,
     ) -> None:
         self.day = day
         g, r2, r3 = params["gate"], params["rule2"], params["rule3"]
+        # 판단이 필요한 동작 변경은 설정 플래그로만 켭니다. 기본값은 원래 동작(리뷰 반영, CHANGES.md '사람이 결정할 것').
+        self.gate_label = str(g.get("label", "아시아 시간대 금 RV"))                 # 기록·화면용 이름만 바뀝니다
+        self.r3_skip_winter = bool(r3.get("skip_us_winter", False))       # 참이면 미국 겨울(서머타임 아님)에 규칙 3 을 쓰지 않음
+        self.gap_buffer = float(stop_gap_buffer_usd)                      # 일일 한도 점검 때 1회 손절 금액에 더할 갭 여유(달러)
         self.q_gate_start, self.q_gate_end, self.q_gate_dec = hm(g["window_start"]), hm(g["window_end"]), hm(g["decision_time"])
         self.q_r_start, self.q_r_end = hm(r2["range_start"]), hm(r2["range_end"])
         self.q_e_start, self.q_e_end, self.q_exit2 = hm(r2["entry_start"]), hm(r2["entry_end"]), hm(r2["exit_time"])
@@ -154,7 +161,7 @@ class DayEngine:
             self.gate_pass, self.gate_note = False, "이력 부족: 거래하지 않음"
         else:
             self.gate_pass = self.rv >= self.threshold
-            self.gate_note = f"중국장 RV {self.rv:.3e} {'≥' if self.gate_pass else '<'} 67 백분위 {self.threshold:.3e}"
+            self.gate_note = f"{self.gate_label} {self.rv:.3e} {'≥' if self.gate_pass else '<'} 67 백분위 {self.threshold:.3e}"
 
     # ------------------------------------------------------------------ 메인
     def on_bar(self, bar: Bar, final: bool = True) -> list[Intent]:
@@ -186,7 +193,7 @@ class DayEngine:
         if self.risk is None:
             return True
         d = self.risk.can_enter("buy" if side > 0 else "sell", self.qty, position=0,
-                                realized_pnl=_dec(self.realized), one_stop_loss=_dec(one_stop_usd))
+                                realized_pnl=_dec(self.realized), one_stop_loss=_dec(one_stop_usd + self.gap_buffer))
         if not d.allowed:
             self.notes.append(f"진입 차단: {d.reason}")
         return d.allowed
@@ -216,11 +223,15 @@ class DayEngine:
             return []
         self.rule2_entered = True
         self.position = Position(2, side, entry, mid, bar.ts)
-        intent = Intent("enter", 2, side, entry, f"범위 {'상단' if side > 0 else '하단'} 돌파 + ZT 확인, 손절 {mid:.1f}", bar.ts)
+        intent = Intent("enter", 2, side, entry, f"범위 {'상단' if side > 0 else '하단'} 돌파 + ZT 확인, 손절 {mid:.1f}", bar.ts,
+                        at_level=entry != bar.o)
         return [intent] + self._manage(bar, kst_minutes(bar.ts), ny_minutes(bar.ts), same_bar=True)
 
     def _rule3_entry(self, bar: Bar) -> list[Intent]:
         self.rule3_done = True
+        if self.r3_skip_winter and not ny_is_dst(bar.ts):
+            self.notes.append("규칙 3: 미국 겨울(서머타임 아님) → 건너뜀 (rule3.skip_us_winter)")
+            return []
         diff = self.sig_close - self.open_px
         if diff == 0:
             self.notes.append("규칙 3: 신호 없음(종가=시가)")
@@ -242,7 +253,7 @@ class DayEngine:
             hit = bar.l <= pos.stop if pos.side > 0 else bar.h >= pos.stop
             if hit:
                 px = min(pos.stop, bar.o) if pos.side > 0 else max(pos.stop, bar.o)
-                return [Intent("exit", pos.rule, pos.side, px, "손절" if pos.rule == 2 else "비상 손절", bar.ts)]
+                return [Intent("exit", pos.rule, pos.side, px, "손절" if pos.rule == 2 else "비상 손절", bar.ts, at_level=px != bar.o)]
         # 시간 청산
         if pos.rule == 2 and k >= self.q_exit2:
             return [Intent("exit", 2, pos.side, bar.o, "23:50 시간 청산", bar.ts)]

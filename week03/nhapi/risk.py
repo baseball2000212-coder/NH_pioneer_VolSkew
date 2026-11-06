@@ -53,6 +53,8 @@ class KillSwitch:
         self.stop_file = Path(stop_file) if stop_file else None
         self._event = threading.Event()
         self.reason = ""
+        #: 종료 정리(청산) 중에는 True. 이때의 Ctrl+C 는 무시합니다(청산 도중 KeyboardInterrupt 로 끊기지 않게).
+        self.shielded = False
 
     def trigger(self, reason: str) -> None:
         if not self._event.is_set():
@@ -68,9 +70,15 @@ class KillSwitch:
         return False
 
     def install_sigint(self) -> None:
-        """Ctrl+C 를 멈춤 신호로 바꿉니다. 두 번째 Ctrl+C 는 평소처럼 KeyboardInterrupt 입니다."""
+        """Ctrl+C 를 멈춤 신호로 바꿉니다. 두 번째 Ctrl+C 는 평소처럼 KeyboardInterrupt 입니다.
+
+        단 종료 정리 중(`shielded`)에는 몇 번을 눌러도 무시하고 안내만 합니다(청산 주문·잔고 확인을 끝까지 하기 위해).
+        """
 
         def handler(signum: int, frame: Any) -> None:
+            if self.shielded:
+                print("[정리 중] 미체결 취소·청산·잔고 확인을 하는 중이라 Ctrl+C 를 무시합니다. 잠시 기다려 주세요.", flush=True)
+                return
             if self._event.is_set():
                 raise KeyboardInterrupt
             self.trigger("Ctrl+C")

@@ -23,7 +23,7 @@ def flat_day(day=(2026, 11, 4), start=(8, 0), end=(23, 59), price=4000.0, wiggle
     last = kst(*day, *end)
     i = 0
     while t <= last:
-        # 중국장 창(10:00~15:55)에는 종가를 ±0.01 로 번갈아 흔들어 RV 가 0 이 되지 않게 합니다(고저 범위는 그대로).
+        # 게이트 집계 창(10:00~15:55)에는 종가를 ±0.01 로 번갈아 흔들어 RV 가 0 이 되지 않게 합니다(고저 범위는 그대로).
         noise = 0.01 if (10 * 60 <= t.hour * 60 + t.minute < 15 * 60 + 55 and i % 2) else 0.0
         bars[t] = Bar(t, price, price + wiggle, price - wiggle, price + noise)
         t += timedelta(minutes=1)

@@ -52,6 +52,14 @@ class OverseasOrderRequest:
     price: Decimal | None = None
     stop_price: Decimal | None = None
     tick: Decimal | None = None
+    #: 보유를 줄이는 청산 주문(반대 방향, 수량 ≤ 보유)인가. 참이면 `pre_check`(킬 스위치 등 진입 점검)를 건너뜁니다.
+    #: 실행기의 청산과 잔고 기준 정리만 참으로 둡니다. 주문 내용(payload)에는 실리지 않습니다.
+    reduce_only: bool = False
+
+
+#: 응답 없는 주문을 주문내역에서 찾을 때 몇 번, 몇 초 간격으로 볼지(접수 직후에는 내역에 늦게 뜰 수 있음)
+RESOLVE_TRIES = 10
+RESOLVE_INTERVAL_SECONDS = 1.0
 
 
 def validate(request: OverseasOrderRequest) -> None:
@@ -164,18 +172,21 @@ class OverseasGateway:
         journal: Journal | None = None,
         pre_check: Callable[[OverseasOrderRequest], Decision] | None = None,
         clock: Callable[[], float] = time.time,
+        sleep: Callable[[float], None] = time.sleep,
     ) -> None:
         self.client = client
         self.journal = journal if journal is not None else client.journal
         self._pre_check = pre_check
         self._clock = clock
+        self._sleep = sleep
         self.known_order_nos: set[str] = set()
 
     # -- 주문
     def place(self, request: OverseasOrderRequest) -> OrderOutcome:
+        """신규 주문. 진입 점검(`pre_check`, 킬 스위치 등)은 진입에만 적용합니다 — 청산(`reduce_only`)은 막지 않습니다."""
         self._guard()
         validate(request)
-        if self._pre_check is not None:
+        if self._pre_check is not None and not request.reduce_only:
             decision = self._pre_check(request)
             if not decision.allowed:
                 self._log("blocked", request, reason=decision.reason)
@@ -268,24 +279,50 @@ class OverseasGateway:
                 return record
         return None
 
-    def resolve_unknown(self, outcome: OrderOutcome) -> OrderOutcome:
-        """응답을 못 받은 주문이 접수됐는지 주문내역으로 확인(정확히 하나일 때만 확정, 모호하면 unknown 유지)."""
+    def resolve_unknown(self, outcome: OrderOutcome, *, tries: int = RESOLVE_TRIES,
+                        interval: float = RESOLVE_INTERVAL_SECONDS) -> OrderOutcome:
+        """응답을 못 받은 주문이 접수됐는지 주문내역으로 확인(정확히 하나일 때만 확정, 모호하면 unknown 유지).
+
+        접수 직후에는 내역에 아직 안 보일 수 있어 `interval` 초 간격으로 `tries` 번(기본 약 10초) 다시 봅니다.
+        조회가 실패해도 예외를 내지 않고 다음 번에 다시 봅니다. 그래도 못 찾으면 unknown 그대로 돌려주고,
+        판정은 부르는 쪽이 잔고(`positions`)로 합니다.
+        """
         request = outcome.request
         if outcome.status != "unknown" or request is None or outcome.sent_at is None:
             return outcome
         floor = datetime.fromtimestamp(outcome.sent_at - RECONCILE_SLACK_SECONDS, KST)
-        matches = []
-        for record in self.history():
-            when = _rcv_datetime(record.recv_time)
-            if (record.sym == request.sym and record.side == request.side and record.qty == Decimal(request.qty)
-                    and record.order_no not in self.known_order_nos and when is not None and when >= floor):
-                matches.append(record.order_no)
-        numbers = sorted(set(matches))
-        if len(numbers) == 1:
-            self.known_order_nos.add(numbers[0])
-            self._log("ack", request, order_no=numbers[0], note="주문내역 대사로 접수 확인")
-            return OrderOutcome("accepted", request, order_no=numbers[0], code="RECONCILED", sent_at=outcome.sent_at)
-        outcome.message = (outcome.message + " ").lstrip() + ("[대사] 일치하는 주문 없음" if not numbers else f"[대사] 후보 {len(numbers)}건 — 모호")
+        numbers: list[str] = []
+        failures = 0
+        for attempt in range(max(1, tries)):
+            if attempt:
+                self._sleep(interval)
+            try:
+                records = self.history()
+            except Exception as exc:  # noqa: BLE001 — 조회 실패는 '없음'이 아닙니다. 다음 번에 다시 봅니다.
+                failures += 1
+                if self.journal is not None:
+                    self.journal.error("resolve_unknown_query", request.sym, msg=f"{type(exc).__name__}: {exc}", attempt=attempt + 1, action="retry")
+                continue
+            matches = []
+            for record in records:
+                when = _rcv_datetime(record.recv_time)
+                if (record.sym == request.sym and record.side == request.side and record.qty == Decimal(request.qty)
+                        and record.order_no not in self.known_order_nos and when is not None and when >= floor):
+                    matches.append(record.order_no)
+            numbers = sorted(set(matches))
+            if len(numbers) == 1:
+                self.known_order_nos.add(numbers[0])
+                self._log("ack", request, order_no=numbers[0], note=f"주문내역 대사로 접수 확인({attempt + 1}번째 조회)")
+                return OrderOutcome("accepted", request, order_no=numbers[0], code="RECONCILED", sent_at=outcome.sent_at)
+            if len(numbers) > 1:
+                break
+        if numbers:
+            note = f"[대사] 후보 {len(numbers)}건 — 모호"
+        elif failures >= max(1, tries):
+            note = "[대사] 주문내역 조회 실패"
+        else:
+            note = "[대사] 일치하는 주문 없음"
+        outcome.message = (outcome.message + " ").lstrip() + note
         return outcome
 
     def _log(self, stage: str, request: OverseasOrderRequest, **fields: Any) -> None:

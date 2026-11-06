@@ -18,7 +18,8 @@
       "min_history_days": 120,
       "window_start": "10:00",
       "window_end": "15:55",
-      "decision_time": "16:00"
+      "decision_time": "16:00",
+      "label": "아시아 시간대 금 RV"
     },
     "rule2": {
       "range_start": "08:00",
@@ -37,23 +38,35 @@
       "signal_ny": "08:29",
       "entry_ny": "08:30",
       "exit_ny": "09:45",
-      "entry_tolerance_minutes": 10
+      "entry_tolerance_minutes": 10,
+      "skip_us_winter": false
     }
   },
   "costs": {
     "round_trip_usd": 4.0,
-    "slippage_ticks": 0
+    "slippage_ticks": 1
+  },
+  "backtest": {
+    "fill_model": "level"
   },
   "risk": {
     "max_position": 1,
     "daily_loss_limit": 800,
     "session_end_flat_minutes": 5,
-    "rule3_emergency_stop_usd": 300
+    "rule3_emergency_stop_usd": 300,
+    "stop_gap_buffer_usd": 0
   },
   "live": {
     "poll_seconds": 5,
     "fill_wait_seconds": 20,
     "end_time": "23:55",
-    "backfill_pages": 4
+    "backfill_pages": 4,
+    "latest_req_qty": 10,
+    "stale_entry_seconds": 120,
+    "stale_hold_seconds": 60,
+    "rate_limit_cooldown_seconds": [10, 20, 40],
+    "flatten_deadline": "23:58",
+    "flatten_max_attempts": 30,
+    "flatten_backoff_seconds": [5, 10, 20, 40, 60]
   }
 }

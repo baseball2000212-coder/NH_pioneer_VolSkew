@@ -55,7 +55,7 @@ def plot_timeline(results: Path = RESULTS, out: Path = CHARTS) -> Path:
     fig, ax = plt.subplots(figsize=(13, 4.8))
     rows = [
         ("모의 운영 시간", 7 * 60, 24 * 60, ck.GRAY, "07:00~24:00"),
-        ("게이트: 중국장 변동성 집계", to_min(p["gate"]["window_start"]), to_min(p["gate"]["window_end"]), ck.PURPLE, "10:00~15:55"),
+        ("게이트: 아시아 시간대 금 RV 집계", to_min(p["gate"]["window_start"]), to_min(p["gate"]["window_end"]), ck.PURPLE, "10:00~15:55"),
         ("규칙 2: 고저 범위 기록", to_min(p["rule2"]["range_start"]), to_min(p["rule2"]["range_end"]), ck.BLUE, "08:00~16:00"),
         ("규칙 2: 돌파 진입 가능", to_min(p["rule2"]["entry_start"]), to_min(p["rule2"]["entry_end"]), ck.ORANGE, "16:00~22:00"),
         ("규칙 2: 보유(손절 또는 23:50 청산)", to_min(p["rule2"]["entry_start"]), to_min(p["rule2"]["exit_time"]), ck.ORANGE, "~23:50"),
@@ -131,7 +131,7 @@ def plot_backtest(results: Path = RESULTS, out: Path = CHARTS, run: str = "bt-nh
     ax.plot([a for a, c in th], [c for a, c in th], color=ck.GRAY, lw=1.2, label="67 백분위 임계값")
     ax.set_yscale("log")
     ck.log_labels(ax)
-    ax.set_title("중국장 변동성(RV)과 게이트 판정", loc="left", fontsize=10.5)
+    ax.set_title("아시아 시간대 금 변동성(RV)과 게이트 판정", loc="left", fontsize=10.5)
     ax.tick_params(axis="x", labelrotation=45)
     ax.legend(fontsize=8)
     passed = sum(1 for r in daily if r["gate_pass"] == "True")
@@ -155,8 +155,8 @@ def plot_gate(results: Path = RESULTS, out: Path = CHARTS, seed: Path | None = N
     recent = [math.log10(v) for d, v in vals if d.year == 2026]
     ax.hist(recent, bins=30, color=ck.BLUE, alpha=0.6, label=f"2026년 ({len(recent)}일)")
     ax.axvline(math.log10(thr), color=ck.RED, lw=1.8, label=f"67 백분위 {thr:.2e}")
-    ax.set_xlabel("log10(중국장 RV)")
-    ax.set_title("중국장 변동성 분포 — 2026 은 오른쪽으로 치우침", loc="left", fontsize=10.5)
+    ax.set_xlabel("log10(아시아 시간대 금 RV)")
+    ax.set_title("아시아 시간대 금 변동성 분포 — 2026 은 오른쪽으로 치우침", loc="left", fontsize=10.5)
     ax.legend(fontsize=8)
     ax = axes[1]
     by_year: dict[int, list[float]] = {}
@@ -221,7 +221,7 @@ def plot_live(run: str, results: Path = RESULTS, out: Path = CHARTS) -> Path:
         ax.plot([b[0] for b in bars], [b[1] for b in bars], color=ck.GRAY, lw=1.0, label="MGCZ26 1분 종가")
     day0 = bars[0][0].date() if bars else None
     if day0:
-        for (a, b, label, color) in ((10, 15.9167, "중국장 집계", ck.PURPLE), (8, 16, "규칙 2 범위", ck.BLUE)):
+        for (a, b, label, color) in ((10, 15.9167, "금 RV 집계(10:00~15:55)", ck.PURPLE), (8, 16, "규칙 2 범위", ck.BLUE)):
             ax.axvspan(datetime.combine(day0, datetime.min.time()).replace(hour=int(a), minute=int((a % 1) * 60), tzinfo=bars[0][0].tzinfo),
                        datetime.combine(day0, datetime.min.time()).replace(hour=int(b), minute=int((b % 1) * 60), tzinfo=bars[0][0].tzinfo),
                        color=color, alpha=0.07, label=label)

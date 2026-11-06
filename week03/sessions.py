@@ -28,5 +28,11 @@ def ny_minutes(ts: datetime) -> int:
     return local.hour * 60 + local.minute
 
 
+def ny_is_dst(ts: datetime) -> bool:
+    """그 시각에 뉴욕이 서머타임인지(겨울이면 False)."""
+    offset = ts.astimezone(NY).dst()
+    return bool(offset) and offset != timedelta(0)
+
+
 def kst_day(ts: datetime):
     return ts.astimezone(KST).date()
