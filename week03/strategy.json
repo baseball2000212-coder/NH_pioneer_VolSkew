@@ -1,7 +1,7 @@
 {
   "strategy": {
     "id": "cn-vol-gate-filter-v3",
-    "name": "중국장 변동성 게이트 + 필터형 규칙 2·3",
+    "name": "아시아 시간대 금 변동성 게이트 + 필터형 규칙 2·3",
     "version": "v3",
     "market": "overseas",
     "exchange": "FCME",
