@@ -1,0 +1,76 @@
+{
+ "run_id": "bt-1110-2229-b3",
+ "mode": "backtest",
+ "label": "[백테스트]",
+ "env": "paper",
+ "first_ts": "2026-11-10T22:29:00.000+09:00",
+ "last_ts": "2026-11-10T23:40:00.000+09:00",
+ "lines": 729,
+ "kinds": {
+  "run": 3,
+  "event": 712,
+  "signal": 2,
+  "order": 6,
+  "fill": 6
+ },
+ "orders": {
+  "by_stage": {
+   "entry": 2,
+   "hedge": 1,
+   "exit": 3
+  },
+  "by_status": {
+   "accepted": 6
+  }
+ },
+ "fills": {
+  "n": 6,
+  "sources": [
+   "backtest-model"
+  ],
+  "contracts": 10,
+  "price_estimated": 0
+ },
+ "hedges": {
+  "n": 1,
+  "mes_ordered": 3
+ },
+ "errors": {},
+ "api_issues": [],
+ "api_calls": {
+  "n": 0,
+  "by_status": {},
+  "by_msg_cd": {},
+  "max_latency_ms": 0
+ },
+ "state_points": 710,
+ "max_abs_mismatch": 2.901,
+ "pnl_net_min": -159.75,
+ "pnl_net_max": 471.12,
+ "engine_summary": {
+  "engine_state": "EXIT",
+  "reason": "time",
+  "flat": true,
+  "left": {},
+  "pnl_gross": 153.75,
+  "fees": 44.0,
+  "pnl_net": 109.75,
+  "attr": {
+   "gamma": 263.5,
+   "theta": -37.51,
+   "vega": -160.13,
+   "delta": 178.12
+  },
+  "hedges": 1,
+  "mes_traded": 6,
+  "parity": {
+   "n": 2046,
+   "mean": -0.0064,
+   "std": 0.5925,
+   "min": -4.125,
+   "max": 5.125,
+   "beyond_cost": 125
+  }
+ },
+ "finished": true
+}
