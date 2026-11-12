@@ -1,0 +1,59 @@
+{
+ "run_id": "smoke-w04-20261111-b",
+ "mode": "smoke",
+ "label": "[조회 점검]",
+ "env": "paper",
+ "first_ts": "2026-11-11T20:37:50.448+09:00",
+ "last_ts": "2026-11-11T20:38:11.744+09:00",
+ "lines": 115,
+ "kinds": {
+  "event": 92,
+  "order": 22,
+  "api_issue": 1
+ },
+ "orders": {
+  "by_stage": {
+   "sent": 11,
+   "ack": 10,
+   "reject": 1
+  },
+  "by_status": {
+   "": 22
+  }
+ },
+ "fills": {
+  "n": 0,
+  "sources": [],
+  "contracts": 0,
+  "price_estimated": 0
+ },
+ "hedges": {
+  "n": 0,
+  "mes_ordered": 0
+ },
+ "errors": {},
+ "api_issues": [
+  {
+   "issue_id": "CAND-7093",
+   "api_id": "overseas_order",
+   "note": "옵션 신규매도 거부"
+  }
+ ],
+ "api_calls": {
+  "n": 50,
+  "by_status": {
+   "200": 49,
+   "400": 1
+  },
+  "by_msg_cd": {
+   "7093": 1
+  },
+  "max_latency_ms": 172.0
+ },
+ "state_points": 0,
+ "max_abs_mismatch": null,
+ "pnl_net_min": null,
+ "pnl_net_max": null,
+ "engine_summary": null,
+ "finished": false
+}

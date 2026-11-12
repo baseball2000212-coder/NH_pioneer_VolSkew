@@ -1,0 +1,55 @@
+{
+  "strategy": {
+    "id": "es-weekly-straddle-mes-hedge",
+    "name": "ES 주간옵션 ATM 롱 스트래들 + MES 델타헤지",
+    "version": "v1",
+    "market": "overseas",
+    "series": "O_EW2X26",
+    "es_sym": "ESZ26",
+    "mes_sym": "MESZ26",
+    "expiry_kst": "2026-11-14 06:00",
+    "pairs": 1
+  },
+  "params": {
+    "strike_step": 5.0,
+    "band": 1.0,
+    "min_gap": 10.0,
+    "max_hedges_per_hour": 12,
+    "poll": 2.0,
+    "iv_max_spread": 2.0,
+    "iv_window": 5,
+    "stale_sec": 60.0,
+    "entry_max_spread": 2.0,
+    "entry_timeout": 120.0,
+    "fill_wait": 10.0,
+    "stop_per_pair": 400.0,
+    "stop_hold": 30.0,
+    "recon_every": 30.0,
+    "log_every": 5.0
+  },
+  "product": {
+    "opt_mult": 50.0,
+    "mes_mult": 5.0,
+    "mes_per_es": 10,
+    "opt_fee": 8.0,
+    "mes_fee": 2.0,
+    "source": "승수는 CME 규격(API 미제공), 수수료 옵션 편도 $8·MES 편도 $2 는 팀 확인값(2026-11-10)"
+  },
+  "session": {
+    "us_cash_open_kst": "23:30",
+    "enter_before_open_min": 20,
+    "note": "미장 정규장 09:30 ET = 23:30 KST (미국 서머타임 종료 2026-11-01 이후). 개장 전에 스트래들을 구축해 개장 후 실현변동성 증가에서 감마 수익을 노린다. 모의 운영 24:00, 엔진 마감 23:45."
+  },
+  "risk": {
+    "max_mes_per_pair": 12,
+    "daily_loss_limit": 1200.0,
+    "deadline": "23:45",
+    "session_end_flat_minutes": 2
+  },
+  "backtest": {
+    "latency_sec": 0.0,
+    "fill_model": "시장가·건너는 지정가는 맞은편 호가에 전량 체결(최악 방향 슬리피지 = 호가폭 전부), 옵션 보유보다 많이 팔면 7093 거부",
+    "price_path": "5초 호가 스냅숏 사이는 직전 값 유지(봉 내부 경로 가정 없음)",
+    "mes_quote_fallback": "MES 기록이 없으면 ES 호가로 대신"
+  }
+}

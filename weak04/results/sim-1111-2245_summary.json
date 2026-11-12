@@ -1,0 +1,80 @@
+{
+ "run_id": "sim-1111-2245",
+ "mode": "paper-sim",
+ "label": "[자체 시뮬레이션(종이 체결)]",
+ "env": "paper",
+ "first_ts": "2026-11-11T22:44:23.403+09:00",
+ "last_ts": "2026-11-11T23:30:00.683+09:00",
+ "lines": 4807,
+ "kinds": {
+  "run": 3,
+  "event": 4795,
+  "signal": 1,
+  "order": 4,
+  "fill": 4
+ },
+ "orders": {
+  "by_stage": {
+   "entry": 2,
+   "exit": 2
+  },
+  "by_status": {
+   "accepted": 4
+  }
+ },
+ "fills": {
+  "n": 4,
+  "sources": [
+   "paper-sim"
+  ],
+  "contracts": 4,
+  "price_estimated": 0
+ },
+ "hedges": {
+  "n": 0,
+  "mes_ordered": 0
+ },
+ "errors": {},
+ "api_issues": [],
+ "api_calls": {
+  "n": 4364,
+  "by_status": {
+   "200": 4363,
+   "None": 1
+  },
+  "by_msg_cd": {
+   "timeout": 1
+  },
+  "max_latency_ms": 10000.0
+ },
+ "state_points": 429,
+ "max_abs_mismatch": 0.38,
+ "pnl_net_min": -141.0,
+ "pnl_net_max": -22.25,
+ "engine_summary": {
+  "engine_state": "EXIT",
+  "reason": "time",
+  "flat": true,
+  "left": {},
+  "pnl_gross": -162.5,
+  "fees": 32.0,
+  "pnl_net": -194.5,
+  "attr": {
+   "gamma": 11.55,
+   "theta": -27.48,
+   "vega": -68.29,
+   "delta": -10.32
+  },
+  "hedges": 0,
+  "mes_traded": 0,
+  "parity": {
+   "n": 1088,
+   "mean": -0.0088,
+   "std": 0.1674,
+   "min": -1.125,
+   "max": 0.875,
+   "beyond_cost": 6
+  }
+ },
+ "finished": true
+}

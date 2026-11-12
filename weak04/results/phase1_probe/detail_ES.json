@@ -1,0 +1,16 @@
+{
+ "request": {
+  "cur_cd": "",
+  "exch_cd": "",
+  "fut_opt_div_cd": "",
+  "nxt_key": "",
+  "prd_cd": "ES",
+  "prd_grp_cd": "",
+  "prd_nm": "",
+  "sett_cd": ""
+ },
+ "response": {
+  "nxt_key": "",
+  "nrec": "00000"
+ }
+}
