@@ -1,0 +1,164 @@
+{
+  "bug_reproduced": true,
+  "checks": [
+    {
+      "id": "EVIDENCE_FILES",
+      "pass": true,
+      "detail": "16/16 파일"
+    },
+    {
+      "id": "MOCK_FILLED_BEFORE_1545",
+      "pass": true,
+      "detail": "모의 체결 시각 11/09 15:35:30.134, 11/12 15:35:30.484, 11/13 15:35:30.112, 11/17 15:35:30.246, 11/18 15:35:30.097, 11/23 15:35:30.260, 11/25 15:35:30.083, 11/26 15:35:30.081, 모두 15:45 전"
+    },
+    {
+      "id": "EXCHANGE_NO_TRADES_1535_1545",
+      "pass": true,
+      "detail": "실제 거래소 15:35:30~15:44:59 체결 11/09 0건, 11/12 0건, 11/13 0건, 11/17 0건, 11/18 0건, 11/23 0건, 11/25 0건, 11/26 0건"
+    },
+    {
+      "id": "EXCHANGE_CLOSE_AUCTION_1545",
+      "pass": true,
+      "detail": "실제 15:45 단일가 체결 11/09 15:45:00.170 10,136계약 @1034.4, 11/12 15:45:00.129 11,472계약 @1146.5, 11/13 15:45:00.182 4,171계약 @1152.4, 11/17 15:45:00.225 9,599계약 @1063.4, 11/18 15:45:00.164 9,485계약 @1092.0, 11/23 15:45:00.170 8,243계약 @1041.8, 11/25 15:45:00.162 9,044계약 @1082.5, 11/26 15:45:00.185 8,700계약 @1095.7"
+    },
+    {
+      "id": "MOCK_PRICE_NOT_CLOSE",
+      "pass": true,
+      "detail": "모의 체결가 ≠ 실제 15:45 종가 8/8일, 차이 절댓값 평균 0.34pt, 최대 0.9pt"
+    }
+  ],
+  "facts": {
+    "days": {
+      "20261109": {
+        "side": "buy",
+        "qty": 1,
+        "sent": "15:35:30.080",
+        "mock_recv": "15:35:30.134",
+        "mock_exec": "15:35:30.134",
+        "mock_price": 1034.7,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.170",
+        "exchange_close_price": 1034.4,
+        "exchange_close_qty": 10136,
+        "mock_minus_close_pt": 0.3,
+        "against_us_pt": 0.3
+      },
+      "20261112": {
+        "side": "buy",
+        "qty": 1,
+        "sent": "15:35:30.148",
+        "mock_recv": "15:35:30.208",
+        "mock_exec": "15:35:30.484",
+        "mock_price": 1146.8,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.129",
+        "exchange_close_price": 1146.5,
+        "exchange_close_qty": 11472,
+        "mock_minus_close_pt": 0.3,
+        "against_us_pt": 0.3
+      },
+      "20261113": {
+        "side": "sell",
+        "qty": 1,
+        "sent": "15:35:30.049",
+        "mock_recv": "15:35:30.112",
+        "mock_exec": "15:35:30.112",
+        "mock_price": 1152.6,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.182",
+        "exchange_close_price": 1152.4,
+        "exchange_close_qty": 4171,
+        "mock_minus_close_pt": 0.2,
+        "against_us_pt": -0.2
+      },
+      "20261117": {
+        "side": "buy",
+        "qty": 1,
+        "sent": "15:35:30.184",
+        "mock_recv": "15:35:30.246",
+        "mock_exec": "15:35:30.246",
+        "mock_price": 1064.0,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.225",
+        "exchange_close_price": 1063.4,
+        "exchange_close_qty": 9599,
+        "mock_minus_close_pt": 0.6,
+        "against_us_pt": 0.6
+      },
+      "20261118": {
+        "side": "sell",
+        "qty": 1,
+        "sent": "15:35:30.037",
+        "mock_recv": "15:35:30.097",
+        "mock_exec": "15:35:30.097",
+        "mock_price": 1091.8,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.164",
+        "exchange_close_price": 1092.0,
+        "exchange_close_qty": 9485,
+        "mock_minus_close_pt": -0.2,
+        "against_us_pt": 0.2
+      },
+      "20261123": {
+        "side": "buy",
+        "qty": 1,
+        "sent": "15:35:30.199",
+        "mock_recv": "15:35:30.260",
+        "mock_exec": "15:35:30.260",
+        "mock_price": 1041.9,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.170",
+        "exchange_close_price": 1041.8,
+        "exchange_close_qty": 8243,
+        "mock_minus_close_pt": 0.1,
+        "against_us_pt": 0.1
+      },
+      "20261125": {
+        "side": "buy",
+        "qty": 20,
+        "sent": "15:35:30.024",
+        "mock_recv": "15:35:30.083",
+        "mock_exec": "15:35:30.083",
+        "mock_price": 1081.6,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.162",
+        "exchange_close_price": 1082.5,
+        "exchange_close_qty": 9044,
+        "mock_minus_close_pt": -0.9,
+        "against_us_pt": -0.9
+      },
+      "20261126": {
+        "side": "sell",
+        "qty": 20,
+        "sent": "15:35:30.022",
+        "mock_recv": "15:35:30.081",
+        "mock_exec": "15:35:30.081",
+        "mock_price": 1095.6,
+        "exchange_trades_1535_30_to_1545": 0,
+        "exchange_close_time": "15:45:00.185",
+        "exchange_close_price": 1095.7,
+        "exchange_close_qty": 8700,
+        "mock_minus_close_pt": -0.1,
+        "against_us_pt": 0.1
+      }
+    },
+    "sha256": {
+      "exchange_ka_20261109_1534_1546.jsonl": "cd2eef8b1d5a885c2d55f422b8b09abd0c2cd5e84a1fd1063c9e4f5aec228427",
+      "exchange_ka_20261112_1534_1546.jsonl": "fd9f03d7b0d1eab225b5fc1bff7d46a9088c96ab17fa4fd9deee9669e0dede86",
+      "exchange_ka_20261113_1534_1546.jsonl": "a5a760f0547492313a88f05c6609c704aed77c079565f03e768f9c59eb8a86c0",
+      "exchange_ka_20261117_1534_1546.jsonl": "be968edcf3ae94d33c44f10723e506b3b57e18cd64ce8cdca45561283fd80564",
+      "exchange_ka_20261118_1534_1546.jsonl": "1f8695326b348a87075658e0b2bd9198c3c481da8fe4dfa09acdf897a533108c",
+      "exchange_ka_20261123_1534_1546.jsonl": "cea49a46483bf241dde56843f890c4f524f8ea0237f5719c5344ce04401ee821",
+      "exchange_ka_20261125_1534_1546.jsonl": "0dd36a091c026a518baf9a4c65a6ff6b196b2b155d36cefd6b818e024ea43a2e",
+      "exchange_ka_20261126_1534_1546.jsonl": "e2c4dfa89dccfb00fb49152e61093d62c62b24b1fae1cf0b014a5a88a3e3dddc",
+      "order_1535_20261109.jsonl": "39c2f9102028b713550ccac0b670f366617ae3108f2a7bcd0dc1b73f92f58c10",
+      "order_1535_20261112.jsonl": "099fc4239352ad64b8e1bad2c973e85867bf66ab28a4f7e592d79030236e2393",
+      "order_1535_20261113.jsonl": "bf83eedee9eb2a229c06c28d79b4c99096a56920ab6e6fde54cae1521e767f24",
+      "order_1535_20261117.jsonl": "0ae329be99245ddd63961d3602e159ca623a18da246a1d91f8d1e39cb48bcb34",
+      "order_1535_20261118.jsonl": "19ed0f6296a2acdbe60b9c03ff1054c945c14dea9d41952045745bb8b6604343",
+      "order_1535_20261123.jsonl": "d236914ff0f7f4696fee27c8c1ea17468af240884f76eb93a85e19f64be2dcf6",
+      "order_1535_20261125.jsonl": "f95b50558161e27ac3273007aa22ec2f65c6eb88d55026eae8f3eb2c9e036e0c",
+      "order_1535_20261126.jsonl": "1ce0bdca9598eacdadc3a98f4fd0c919de65c755e3b6b29d2b86db186d13951c"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "bug_reproduced": true,
+  "checks": [
+    {
+      "id": "EVIDENCE_FILES",
+      "pass": true,
+      "detail": "7/7 파일"
+    },
+    {
+      "id": "MARKET_ALL_REJECTED",
+      "pass": true,
+      "detail": "시장가 38건 중 거부 38건 (08:30:20~08:33:57)"
+    },
+    {
+      "id": "ACK_WITHOUT_ERROR",
+      "pass": true,
+      "detail": "주문 응답 40건(신규·취소) 모두 오류코드 없이 접수(주문번호 발급) → 주문내역에서만 거부로 보임"
+    },
+    {
+      "id": "REJECT_REASON",
+      "pass": true,
+      "detail": "주문내역 거부 사유 '호가접수 개시 전' 38건"
+    },
+    {
+      "id": "LIMIT_ACCEPTED_0834",
+      "pass": true,
+      "detail": "지정가 08:34:03 접수, 주문내역 상태 '미체결' (접수시각 083403696)"
+    },
+    {
+      "id": "EXCHANGE_PREOPEN_LIVE",
+      "pass": true,
+      "detail": "08:30~08:34 실제 호가 58건, 첫 호가 08:30:00.272, 첫 예상체결가 08:30:00.572 (1125.10)"
+    },
+    {
+      "id": "OTHER_DAYS",
+      "pass": true,
+      "detail": "같은 08:30:20 시장가: 정상 ['20261112', '20261116', '20261118'], 같은 거부 ['20261113']"
+    },
+    {
+      "id": "MOCK_FILLS_BEFORE_AUCTION",
+      "pass": true,
+      "detail": "20261112 모의 083020216 1167.0 vs 실제 08:45 시가 1176.1; 20261116 모의 083020195 1137.2 vs 실제 08:45 시가 1161.7; 20261118 모의 083020189 1088.0 vs 실제 08:45 시가 1089.0"
+    }
+  ],
+  "facts": {
+    "sha256": {
+      "exchange_quotes_20261124_0830_0845.jsonl": "9f95e74040633e2bd73ae24ad52fa7d583ac01ee125e7c3363684e0b77a97c3a",
+      "journal_20261112.jsonl": "6dbbaf585f2068c0bcc098237f3dec421ca2eab559183c05f200b034bba18899",
+      "journal_20261113.jsonl": "b3a028a7cc4b752d4f3a89c8d9e967089f5327d790a1bcf4d2474b6f8009dbe4",
+      "journal_20261116.jsonl": "e36a606275f197145eb270af02ba7fe732b9582175c2c83e6b155e8f8017c8de",
+      "journal_20261118.jsonl": "6d9449dba39c0adab989011636244ae86bfb0fc9edc0f92158e1846085d75d2d",
+      "journal_20261124.jsonl": "ce378398bb4d15981f52691bb804c613e8cf69287c2683d9e78993f22e03d3c5",
+      "kq150_open_20261124.log": "1eaa9beb6784b957a6d53bc92fd55d144697dfdb53a6eadc0a72863b4bd4dccb"
+    },
+    "market_tries": 38,
+    "market_first_last": [
+      "2026-11-24T08:30:20.000+09:00",
+      "2026-11-24T08:33:57.585+09:00"
+    ],
+    "exchange_first_quote": "2026-11-24T08:30:00.272+09:00",
+    "exchange_first_est": "2026-11-24T08:30:00.572+09:00",
+    "other_days": {
+      "20261112": {
+        "sent": "08:30:20",
+        "history_status": "체결",
+        "reject": "",
+        "recv_time": "083020216",
+        "exec_time": "083020216",
+        "mock_fill": "1167.000000000",
+        "real_open_0845": "1176.10"
+      },
+      "20261113": {
+        "sent": "08:30:20",
+        "history_status": "거부",
+        "reject": "호가접수 개시 전",
+        "recv_time": "083020354",
+        "exec_time": "",
+        "mock_fill": "",
+        "real_open_0845": null
+      },
+      "20261116": {
+        "sent": "08:30:20",
+        "history_status": "체결",
+        "reject": "",
+        "recv_time": "083020195",
+        "exec_time": "083020195",
+        "mock_fill": "1137.200000000",
+        "real_open_0845": "1161.70"
+      },
+      "20261118": {
+        "sent": "08:30:20",
+        "history_status": "체결",
+        "reject": "",
+        "recv_time": "083020189",
+        "exec_time": "083020189",
+        "mock_fill": "1088.000000000",
+        "real_open_0845": "1089.00"
+      }
+    }
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "bug_reproduced": true,
+  "checks": [
+    {
+      "id": "EVIDENCE_FILES",
+      "pass": true,
+      "detail": "5/5 파일"
+    },
+    {
+      "id": "RECEIVER_NO_DROP",
+      "pass": true,
+      "detail": "11/25 받은 프레임 907,220개 = 시세 906,328 + 제어 892, 해석 실패 0 · 모양 불일치 0 (세 종목 합계)"
+    },
+    {
+      "id": "NH_COUNT_GAP",
+      "pass": true,
+      "detail": "11/25 A066C000 NH 누적 체결 건수(cum_buy_cnt+cum_sel_cnt) 146,110건 vs 받은 체결 메시지(tick_div=1) 142,324건(중복 0) → 메시지 없는 체결 3,786건 (2.59%), 건수가 2 이상 건너뛴 자리 2,480곳"
+    },
+    {
+      "id": "STATUS_MSG_SHOWS_MISSING",
+      "pass": true,
+      "detail": "11/25 상태 메시지(tick_div=0)가 체결 메시지로는 한 번도 오지 않은 누적 건수 값을 실은 경우 516개, 그중 앞뒤 체결 메시지 사이 빈 자리에 건수·수량이 맞게 들어가는 것 516개"
+    },
+    {
+      "id": "NEW_HIGH_LOW_WITHOUT_TRADE",
+      "pass": true,
+      "detail": "11/25 일중 고가 갱신 169번 중 갱신 체결의 메시지가 없는 것 3번, 저가 갱신 152번 중 0번. 예: 10:21:04.958 고가 1085.20→1085.30 인데 그 메시지 체결가 1085.10, 건수 50368→50370"
+    },
+    {
+      "id": "BY_SEGMENT",
+      "pass": true,
+      "detail": "11/25 시간대별 메시지 없는 체결: 08:45~09:00 13/2,266건(0.57%), 09:00~15:20 3,736/136,546건(2.74%), 15:20~15:35 37/7,296건(0.51%), 15:35~(종가 단일가) 0/1건(0.0%)"
+    },
+    {
+      "id": "NH_VOLUME_GAP",
+      "pass": true,
+      "detail": "11/25 누적체결수량 243,092계약 vs 받은 체결수량 합 237,305계약 → 5,787계약 (2.38%) 메시지 없음"
+    },
+    {
+      "id": "CHART_EQUALS_CUM",
+      "pass": true,
+      "detail": "11/25 NH 분봉 거래량 합 243,092 = 실시간 누적체결수량 243,092; 411분 중 381분은 받은 체결 메시지 수량 합이 분봉 거래량보다 적고, 많은 분은 7분"
+    },
+    {
+      "id": "SAME_ON_20261124",
+      "pass": true,
+      "detail": "11/24 메시지 없는 체결 4,425건 (2.64%), 6,627계약 (2.32%), 분봉 합 285,067 = 누적 285,067"
+    },
+    {
+      "id": "ARRIVAL_ORDER_REVERSED",
+      "pass": true,
+      "detail": "11/25 체결 메시지 중 늦은 체결이 먼저 도착 626번 (11/24 5번), 우리 수신시각 역전 0번"
+    }
+  ],
+  "facts": {
+    "sha256": {
+      "ka_A066C000_20261124.csv.gz": "7015151ea9ddad9681be2af7d618e39a12545c215faeaae023c6cbbfd4b6bb73",
+      "ka_A066C000_20261125.csv.gz": "e55b99d990666a27d994b86b3dbe4f79f93f525d2c13bacaecd7ed14f24c590f",
+      "nh_chart_1m_A066C000_20261124.csv": "b68d65d32dadc79ff1e5c62468d66f80669a4dc301baacffbe2544284fac79ed",
+      "nh_chart_1m_A066C000_20261125.csv": "4051af291f5c73f3b6f179fe5d75f40a7630a941a0bfb7039033e59ded78ee11",
+      "recorder_journal_20261125.jsonl": "683eeabb80ce7a0fc5ec3e0222c599f3153bb9a1c45e7d841dc0c71dbc98b1bc"
+    },
+    "ws_frames_20261125": {
+      "frames": {
+        "control": 892,
+        "delivered": 906328
+      },
+      "drop_samples": [],
+      "ts": "2026-11-25T15:50:00.281+09:00"
+    },
+    "days": {
+      "20261124": {
+        "messages": 184525,
+        "trade_messages": 163079,
+        "status_messages": 21446,
+        "trade_messages_duplicated": 0,
+        "nh_cum_trade_count": 167504,
+        "missing_trades": 4425,
+        "missing_trades_pct": 2.64,
+        "count_jumps": 2719,
+        "count_jumps_missing_trades": 4425,
+        "nh_cum_qty": 285067,
+        "received_qty": 278440,
+        "missing_qty": 6627,
+        "missing_qty_pct": 2.32,
+        "chart_total_qty": 285067,
+        "minutes_compared": 411,
+        "minutes_messages_short_of_chart": 392,
+        "minutes_messages_over_chart": 0,
+        "trade_cum_reversed_in_arrival": 5,
+        "recv_time_reversed": 0,
+        "missing_trades_by_hour": {
+          "08": 48,
+          "09": 1415,
+          "10": 763,
+          "11": 488,
+          "12": 347,
+          "13": 433,
+          "14": 469,
+          "15": 462
+        },
+        "missing_by_segment": {
+          "08:45~09:00": {
+            "nh_trades": 3411,
+            "missing": 48,
+            "missing_pct": 1.41
+          },
+          "09:00~15:20": {
+            "nh_trades": 154318,
+            "missing": 4326,
+            "missing_pct": 2.8
+          },
+          "15:20~15:35": {
+            "nh_trades": 9773,
+            "missing": 51,
+            "missing_pct": 0.52
+          },
+          "15:35~(종가 단일가)": {
+            "nh_trades": 1,
+            "missing": 0,
+            "missing_pct": 0.0
+          }
+        },
+        "holes_qty_merged_into_next": 0,
+        "recv_interval_ms_median_across_hole": 206,
+        "recv_interval_ms_median_normal": 5,
+        "single_missing_trade_qty_dist_5plus": {
+          "1": 1382,
+          "2": 250,
+          "3": 104,
+          "4": 41,
+          "5": 59
+        },
+        "avg_qty_missing_trade": 1.5,
+        "avg_qty_received_trade": 1.71,
+        "status_msgs_revealing_missing_counts": 508,
+        "status_reveal_inside_hole_and_qty_fits": 508,
+        "new_highs": 48,
+        "new_highs_without_trade_message": [
+          {
+            "t": "08:45:00.258",
+            "high_before": "1109.00",
+            "high_after": "1110.10",
+            "msg_price": "1110.00",
+            "cnt_before": 1,
+            "cnt_after": 7
+          }
+        ],
+        "new_lows": 223,
+        "new_lows_without_trade_message": [],
+        "hole_examples": [
+          {
+            "before": {
+              "t": "2026-11-24T08:45:00.052+09:00",
+              "exch_tm": "084500",
+              "cum_qty": 226,
+              "cum_cnt": 1,
+              "price": "1109.00"
+            },
+            "after": {
+              "t": "2026-11-24T08:45:00.258+09:00",
+              "exch_tm": "084500",
+              "cum_qty": 232,
+              "cum_cnt": 7,
+              "exec_qty": 1,
+              "price": "1110.00"
+            },
+            "missing_trades": 5,
+            "missing_qty": 5
+          },
+          {
+            "before": {
+              "t": "2026-11-24T08:50:30.829+09:00",
+              "exch_tm": "085030",
+              "cum_qty": 5030,
+              "cum_cnt": 1909,
+              "price": "1098.30"
+            },
+            "after": {
+              "t": "2026-11-24T08:50:32.210+09:00",
+              "exch_tm": "085032",
+              "cum_qty": 5032,
+              "cum_cnt": 1911,
+              "exec_qty": 1,
+              "price": "1098.10"
+            },
+            "missing_trades": 1,
+            "missing_qty": 1
+          },
+          {
+            "before": {
+              "t": "2026-11-24T08:50:39.618+09:00",
+              "exch_tm": "085039",
+              "cum_qty": 5057,
+              "cum_cnt": 1930,
+              "price": "1098.70"
+            },
+            "after": {
+              "t": "2026-11-24T08:50:40.325+09:00",
+              "exch_tm": "085040",
+              "cum_qty": 5060,
+              "cum_cnt": 1932,
+              "exec_qty": 1,
+              "price": "1098.60"
+            },
+            "missing_trades": 1,
+            "missing_qty": 2
+          },
+          {
+            "before": {
+              "t": "2026-11-24T08:50:51.938+09:00",
+              "exch_tm": "085051",
+              "cum_qty": 5082,
+              "cum_cnt": 1948,
+              "price": "1097.80"
+            },
+            "after": {
+              "t": "2026-11-24T08:50:54.741+09:00",
+              "exch_tm": "085054",
+              "cum_qty": 5087,
+              "cum_cnt": 1952,
+              "exec_qty": 1,
+              "price": "1097.80"
+            },
+            "missing_trades": 3,
+            "missing_qty": 4
+          },
+          {
+            "before": {
+              "t": "2026-11-24T08:51:30.281+09:00",
+              "exch_tm": "085130",
+              "cum_qty": 5217,
+              "cum_cnt": 2038,
+              "price": "1098.40"
+            },
+            "after": {
+              "t": "2026-11-24T08:51:30.324+09:00",
+              "exch_tm": "085130",
+              "cum_qty": 5219,
+              "cum_cnt": 2040,
+              "exec_qty": 1,
+              "price": "1098.40"
+            },
+            "missing_trades": 1,
+            "missing_qty": 1
+          }
+        ]
+      },
+      "20261125": {
+        "messages": 163933,
+        "trade_messages": 142324,
+        "status_messages": 21609,
+        "trade_messages_duplicated": 0,
+        "nh_cum_trade_count": 146110,
+        "missing_trades": 3786,
+        "missing_trades_pct": 2.59,
+        "count_jumps": 2480,
+        "count_jumps_missing_trades": 3786,
+        "nh_cum_qty": 243092,
+        "received_qty": 237305,
+        "missing_qty": 5787,
+        "missing_qty_pct": 2.38,
+        "chart_total_qty": 243092,
+        "minutes_compared": 411,
+        "minutes_messages_short_of_chart": 381,
+        "minutes_messages_over_chart": 7,
+        "trade_cum_reversed_in_arrival": 626,
+        "recv_time_reversed": 0,
+        "missing_trades_by_hour": {
+          "08": 13,
+          "09": 940,
+          "10": 824,
+          "11": 411,
+          "12": 330,
+          "13": 433,
+          "14": 482,
+          "15": 353
+        },
+        "missing_by_segment": {
+          "08:45~09:00": {
+            "nh_trades": 2266,
+            "missing": 13,
+            "missing_pct": 0.57
+          },
+          "09:00~15:20": {
+            "nh_trades": 136546,
+            "missing": 3736,
+            "missing_pct": 2.74
+          },
+          "15:20~15:35": {
+            "nh_trades": 7296,
+            "missing": 37,
+            "missing_pct": 0.51
+          },
+          "15:35~(종가 단일가)": {
+            "nh_trades": 1,
+            "missing": 0,
+            "missing_pct": 0.0
+          }
+        },
+        "holes_qty_merged_into_next": 0,
+        "recv_interval_ms_median_across_hole": 268,
+        "recv_interval_ms_median_normal": 14,
+        "single_missing_trade_qty_dist_5plus": {
+          "1": 1328,
+          "2": 264,
+          "3": 78,
+          "4": 41,
+          "5": 46
+        },
+        "avg_qty_missing_trade": 1.53,
+        "avg_qty_received_trade": 1.67,
+        "status_msgs_revealing_missing_counts": 516,
+        "status_reveal_inside_hole_and_qty_fits": 516,
+        "new_highs": 169,
+        "new_highs_without_trade_message": [
+          {
+            "t": "10:21:04.958",
+            "high_before": "1085.20",
+            "high_after": "1085.30",
+            "msg_price": "1085.10",
+            "cnt_before": 50368,
+            "cnt_after": 50370
+          },
+          {
+            "t": "10:26:22.001",
+            "high_before": "1090.80",
+            "high_after": "1090.90",
+            "msg_price": "1090.80",
+            "cnt_before": 53294,
+            "cnt_after": 53296
+          },
+          {
+            "t": "10:27:31.534",
+            "high_before": "1094.40",
+            "high_after": "1094.50",
+            "msg_price": "1094.30",
+            "cnt_before": 54153,
+            "cnt_after": 54155
+          }
+        ],
+        "new_lows": 152,
+        "new_lows_without_trade_message": [],
+        "hole_examples": [
+          {
+            "before": {
+              "t": "2026-11-25T08:50:30.179+09:00",
+              "exch_tm": "085030",
+              "cum_qty": 2791,
+              "cum_cnt": 1356,
+              "price": "1076.00"
+            },
+            "after": {
+              "t": "2026-11-25T08:50:34.006+09:00",
+              "exch_tm": "085033",
+              "cum_qty": 2794,
+              "cum_cnt": 1358,
+              "exec_qty": 1,
+              "price": "1075.90"
+            },
+            "missing_trades": 1,
+            "missing_qty": 2
+          },
+          {
+            "before": {
+              "t": "2026-11-25T08:50:40.252+09:00",
+              "exch_tm": "085040",
+              "cum_qty": 2804,
+              "cum_cnt": 1362,
+              "price": "1076.20"
+            },
+            "after": {
+              "t": "2026-11-25T08:50:40.346+09:00",
+              "exch_tm": "085040",
+              "cum_qty": 2807,
+              "cum_cnt": 1364,
+              "exec_qty": 1,
+              "price": "1076.20"
+            },
+            "missing_trades": 1,
+            "missing_qty": 2
+          },
+          {
+            "before": {
+              "t": "2026-11-25T08:51:41.675+09:00",
+              "exch_tm": "085141",
+              "cum_qty": 2894,
+              "cum_cnt": 1426,
+              "price": "1075.20"
+            },
+            "after": {
+              "t": "2026-11-25T08:51:42.130+09:00",
+              "exch_tm": "085142",
+              "cum_qty": 2898,
+              "cum_cnt": 1428,
+              "exec_qty": 3,
+              "price": "1075.00"
+            },
+            "missing_trades": 1,
+            "missing_qty": 1
+          },
+          {
+            "before": {
+              "t": "2026-11-25T08:52:37.641+09:00",
+              "exch_tm": "085237",
+              "cum_qty": 3031,
+              "cum_cnt": 1506,
+              "price": "1075.30"
+            },
+            "after": {
+              "t": "2026-11-25T08:52:42.207+09:00",
+              "exch_tm": "085242",
+              "cum_qty": 3033,
+              "cum_cnt": 1508,
+              "exec_qty": 1,
+              "price": "1075.20"
+            },
+            "missing_trades": 1,
+            "missing_qty": 1
+          },
+          {
+            "before": {
+              "t": "2026-11-25T08:55:28.399+09:00",
+              "exch_tm": "085528",
+              "cum_qty": 3465,
+              "cum_cnt": 1774,
+              "price": "1079.60"
+            },
+            "after": {
+              "t": "2026-11-25T08:55:32.613+09:00",
+              "exch_tm": "085532",
+              "cum_qty": 3467,
+              "cum_cnt": 1776,
+              "exec_qty": 1,
+              "price": "1079.50"
+            },
+            "missing_trades": 1,
+            "missing_qty": 1
+          }
+        ]
+      }
+    }
+  }
+}
