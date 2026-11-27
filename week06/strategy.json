@@ -1,0 +1,65 @@
+{
+  "strategy": {
+    "id": "late-session-momentum",
+    "name": "장 막판 모멘텀 (3% 규칙)",
+    "version": "v1",
+    "market": "domestic",
+    "sym": "A066C000",
+    "contract": "코스닥150 선물 2026-12월물",
+    "session": "day",
+    "order_qty": 1,
+    "multiplier": "10000",
+    "tick": "0.1",
+    "note": "종목코드(sym)는 실행 때 종목 마스터의 근월물로 바뀐다 (contract.py). exit_mode: auction=15:45 종가, continuous=15:34:30. 2026-11-11 사용자 승인: 15:19:50 판단·15:20 진입 → 15:18:55 판단·15:19 진입 (research/desks/kq150/entry_1519_review/)"
+  },
+  "params": {
+    "threshold_pct": "3.0",
+    "decision_time": "15:18:55",
+    "entry_time": "15:19:00",
+    "entry_grace_s": 30,
+    "stop_pt": "10.0",
+    "stop_until": "15:34:55",
+    "exit_mode": "auction",
+    "exit_submit_time_auction": "15:35:30",
+    "exit_submit_time_continuous": "15:34:30",
+    "exit_retry_time": "15:40:00",
+    "auction_fill_time": "15:45:00",
+    "end_time": "15:46:30",
+    "start_not_before": "15:00:00",
+    "cost_pt_roundtrip": "0.5",
+    "sim_slippage_ticks": "1",
+    "price_max_age_s": 5,
+    "poll_interval_s": 0.2,
+    "fill_poll_interval_s": 0.5,
+    "fill_poll_max_s": 8
+  },
+  "risk": {
+    "max_position": 1,
+    "daily_loss_limit": "300000",
+    "session_end_flat_minutes": 10
+  },
+  "backtest": {
+    "cost_pt_list": [
+      "0.0",
+      "0.2",
+      "0.5",
+      "1.0"
+    ],
+    "threshold_pct_list": [
+      "1.0",
+      "2.0",
+      "2.5",
+      "3.0",
+      "4.0",
+      "5.0",
+      "100"
+    ],
+    "exit_list": [
+      "1525",
+      "1530",
+      "1534",
+      "1545"
+    ],
+    "train_end": "20260430"
+  }
+}

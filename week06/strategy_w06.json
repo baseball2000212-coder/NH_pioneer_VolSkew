@@ -1,0 +1,104 @@
+{
+  "strategy": {
+    "id": "late-session-momentum-w06",
+    "name": "장 막판 모멘텀 (3% 규칙)",
+    "version": "w06-20-split",
+    "market": "domestic",
+    "sym": "A066C000",
+    "contract": "코스닥150 선물 2026-12월물",
+    "session": "day",
+    "order_qty": 20,
+    "multiplier": "10000",
+    "tick": "0.1",
+    "note": "6주차(전략+위험관리): 2주차 국내전략을 20계약으로. 위험관리 = 호가 따라 분할 진입 + 조각별 감시 + 2주차 10pt 손절(닿으면 호가 따라 분할 청산) + 15:45 단일가 한 주문 청산. 모의 전용. 2026-11-26 사용자 결정으로 꼬리 손절·손실 한도·CUSUM 은 뺌."
+  },
+  "params": {
+    "threshold_pct": "3.0",
+    "decision_time": "15:18:55",
+    "entry_time": "15:19:00",
+    "entry_grace_s": 30,
+    "stop_pt": "10.0",
+    "stop_until": "15:34:55",
+    "exit_mode": "auction",
+    "exit_submit_time_auction": "15:35:30",
+    "exit_submit_time_continuous": "15:34:30",
+    "exit_retry_time": "15:40:00",
+    "auction_fill_time": "15:45:00",
+    "end_time": "15:46:30",
+    "start_not_before": "15:00:00",
+    "cost_pt_roundtrip": "0.5",
+    "sim_slippage_ticks": "1",
+    "price_max_age_s": 5,
+    "poll_interval_s": 0.05,
+    "fill_poll_interval_s": 0.5,
+    "fill_poll_max_s": 8
+  },
+  "risk": {
+    "max_position": 20,
+    "daily_loss_limit": "6000000",
+    "session_end_flat_minutes": 10
+  },
+  "backtest": {
+    "cost_pt_list": [
+      "0.0",
+      "0.2",
+      "0.5",
+      "1.0"
+    ],
+    "threshold_pct_list": [
+      "1.0",
+      "2.0",
+      "2.5",
+      "3.0",
+      "4.0",
+      "5.0",
+      "100"
+    ],
+    "exit_list": [
+      "1525",
+      "1530",
+      "1534",
+      "1545"
+    ],
+    "train_end": "20260430"
+  },
+  "w06": {
+    "max_contracts": 20,
+    "entry_weights": [
+      8,
+      6,
+      6
+    ],
+    "entry_offsets_s": [
+      0,
+      5,
+      10
+    ],
+    "exit_stop_weights": [
+      1,
+      1
+    ],
+    "exit_stop_offsets_s": [
+      0,
+      1
+    ],
+    "guard": {
+      "max_age_s": 5,
+      "book_max_age_s": 2,
+      "depth_levels": 2,
+      "half_life_s": 2.78,
+      "gap_s": 5,
+      "spread_first_ticks": 6,
+      "spread_first_wait_s": 1,
+      "spread_next_ticks": 4,
+      "spread_next_wait_s": 5,
+      "slow_slip_ticks": 3,
+      "slow_gap_s": 10,
+      "halt_slip_ticks": 5,
+      "window_s": 30,
+      "max_rejects": 2,
+      "exit_gap_s": 1
+    },
+    "note": "조각: 보내는 순간 1·2호가 잔량(−덜 회복된 우리 몫, 반감기 2.78초), 5초 간격. 감시값은 exec/결과_exec.md 6절 분위수. 사다리(8·6·6)는 호가가 2초 넘게 안 왔을 때만. half_life_s 는 모의서버라 넣은 값(실계좌면 0)."
+  }
+}
